@@ -3,21 +3,49 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `MartVilla`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "src/images/icon.png"
-    }
-  }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
+  plugins: [
+    {
+      resolve: "gatsby-plugin-styled-components",
+      options: {
+        displayName: process.env.NODE_ENV === "development",
+      },
     },
-    __key: "images"
-  }]
+    "gatsby-plugin-image",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: "src/assets/images/icon.png",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-webfonts",
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Nunito Sans",
+              variants: ["400", "600"],
+              subsets: ["latin-ext"],
+            },
+          ],
+        },
+      },
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: "./src/assets/images/",
+      },
+    },
+    "gatsby-plugin-svgr",
+  ],
 };
 
 export default config;

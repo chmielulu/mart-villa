@@ -1,17 +1,17 @@
 import React, { FC } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../theme/GlobalStyles";
 import { theme } from "../theme/theme";
-import Navigation from "../components/molecules/Navigation";
+import Navigation from "../components/molecules/Navigation/Navigation";
 import { Helmet } from "react-helmet";
-import { TITLE } from "../config";
+import Footer from "../components/molecules/Footer/Footer";
 
-const MainTemplate: FC<Props> = ({ children, renderHero: Hero }) => {
+const MainTemplate: FC<Props> = ({ children, renderHero: Hero, title }) => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <Helmet>
-          <title>{TITLE}</title>
+          <title>{title}</title>
         </Helmet>
         <GlobalStyles />
         <header>
@@ -19,7 +19,9 @@ const MainTemplate: FC<Props> = ({ children, renderHero: Hero }) => {
           {Hero && <Hero />}
         </header>
 
-        {children}
+        <main style={{ paddingBottom: "50px" }}>{children}</main>
+
+        <Footer />
       </>
     </ThemeProvider>
   );
@@ -27,5 +29,6 @@ const MainTemplate: FC<Props> = ({ children, renderHero: Hero }) => {
 
 interface Props {
   renderHero?: FC;
+  title?: string;
 }
 export default MainTemplate;

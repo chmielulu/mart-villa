@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled, { css } from "styled-components";
-import { ReactComponent as ButtonBg } from "../../assets/vector/button-bg.svg";
-import { ReactComponent as SecondaryButtonBg } from "../../assets/vector/button-secondary-bg.svg";
+import { ReactComponent as ButtonBg } from "../../../assets/vector/button-bg.svg";
+import { ReactComponent as SecondaryButtonBg } from "../../../assets/vector/button-secondary-bg.svg";
 import { Icon } from "@iconify/react";
 
 const StyledButton = styled.button`
